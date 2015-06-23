@@ -1,0 +1,17 @@
+{
+  "name": "witch-yaml",
+  "version": "1.0.0",
+  "description": "YAML metadata parsing plugin for witchcraft.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "witchraft",
+    "yaml",
+    "parser",
+    "metadata"
+  ],
+  "author": "Jakub Wasilewski <wasyl@wasyl.eu>",
+  "license": "MIT"
+}
