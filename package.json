@@ -4,7 +4,7 @@
   "description": "YAML metadata parsing plugin for witchcraft.",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/.bin/mocha test/*.js"
   },
   "keywords": [
     "witchraft",
@@ -13,5 +13,12 @@
     "metadata"
   ],
   "author": "Jakub Wasilewski <wasyl@wasyl.eu>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^3.9.3"
+  },
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "mocha": "^2.2.5"
+  }
 }
