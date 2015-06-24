@@ -16,6 +16,7 @@
   "author": "Jakub Wasilewski <wasyl@wasyl.eu>",
   "license": "MIT",
   "dependencies": {
+    "js-yaml": "^3.3.1",
     "lodash": "^3.9.3"
   },
   "devDependencies": {
