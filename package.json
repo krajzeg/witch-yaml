@@ -1,6 +1,6 @@
 {
   "name": "witch-yaml",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": "krajzeg/witch-yaml",
   "description": "YAML metadata parsing plugin for witchcraft.",
   "main": "lib/index.js",
