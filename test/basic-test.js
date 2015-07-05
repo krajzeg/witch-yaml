@@ -1,10 +1,10 @@
 var assert = require('chai').assert;
 
-describe("parseYAMLMetadata", function() {
-	var parseYAMLMetadata = require('../').parseYAMLMetadata;
-	var parse = parseYAMLMetadata();
+describe("extractYamlProperties", function() {
+	var extractYamlProperties = require('../').extractYamlProperties;
+	var parse = extractYamlProperties();
 
-	describe("for files without YAML metadata", function() {
+	describe("for files without YAML frontmatter", function() {
 		var sourceFile = {path: "file.txt", contents: "Hello!"};
 
 		it("should return them unchanged", function() {
@@ -13,8 +13,8 @@ describe("parseYAMLMetadata", function() {
 		});
 	});
 
-	describe("for files with YAML metadata", function() {
-		var contents = 'species: wombat\nnumberOfLegs: 4\n===\nHello!'
+	describe("for files with YAML frontmatter", function() {
+		var contents = '---\nspecies: wombat\nnumberOfLegs: 4\n---\nHello!'
 		var sourceFile = {path: "file.txt", contents: contents};
 		var resultFile = parse(sourceFile);
 
@@ -25,6 +25,19 @@ describe("parseYAMLMetadata", function() {
 
 		it("should strip the YAML from the contents", function() {
 			assert.equal(resultFile.contents, "Hello!");
+		});
+	});
+
+	describe("with a different regular expression provided", function() {
+		it("should still work", function() {
+			var parse = extractYamlProperties({regex: /\[(.*?)\]/g});
+			var contents = "[species: eagle]Hello![wingspan: huge]";
+			var sourceFile = {path: "file.txt", contents: contents};
+
+			var resultFile = parse(sourceFile);
+			assert.equal(resultFile.contents, "Hello!");
+			assert.equal(resultFile.species, "eagle");
+			assert.equal(resultFile.wingspan, "huge");
 		});
 	});
 });
